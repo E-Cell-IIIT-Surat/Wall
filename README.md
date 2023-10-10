@@ -24,6 +24,6 @@ py manage.py runserver
 
 ## To Contribute:
 
-Fork the Repo Raise Issues
-Get Assigned And Solve the issues
-Make a Pull Request
++ Fork the Repo Raise Issues
++ Get Assigned And Solve the issues
++ Make a Pull Request
