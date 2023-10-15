@@ -1535,7 +1535,7 @@ img.author-box-image {
 
 .parallax {
     /* The image used */
-    background-image: url("./images/test.jpg");
+    background-image: url("../images/test.jpg");
   
     /* Set a specific height */
     min-height: 500px;

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruminate</title>
     <link rel="apple-touch-icon" href="https://ik.imagekit.io/iqgqcaprmq/Ruminate_Logo_png-04_x0_ksBWZd.jpg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/animate.css">
-    <link rel="stylesheet" href="./css/font-awesome.css">
-    <link rel="stylesheet" href="./css/pe-icons.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
 </head>
 
 <!-- Header -->
@@ -220,42 +217,33 @@
 
                             <div class="carousel-inner">
                                 <!-- Quote 1 -->
-                                <div class="item active">
-                                    <blockquote>
-                                        <div class="row">
-                                            <div class="col-sm-3 text-center">
-                                                <img class="img-responsive lozad" loading="lazy"
-                                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/puneet_EF7ws5i0Zj.jpg"
-                                                    style="width: 100px;height:100px;">
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <p>Founder at BugClipper, Mobile and Front End Developer located at
-                                                    Mumbai</p>
-                                                <small>Puneet Sharma</small>
-                                            </div>
+                                {% block list1 %}
+                                        {% for event in ongoingEvents %}
+
+                                        <div class="item active">
+                                            <h2>{{event.title}}</h2>
+                                            <blockquote>
+                                                <div class="row">
+                                                    <div class="col-sm-3 text-center">
+                                                        <img class="img-responsive lozad" loading="lazy"
+                                                            src="{{event.image.url}}"
+                                                            style="width: 100px;height:100px;">
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <p>{{event.Desc}}</p>
+                                                        <small>Puneet Sharma</small>
+                                                    </div>
+                                                </div>
+                                                <div class="read-more-wrapper">
+                                                    <a href="{{event.link}}" class="btn btn-outlined btn-primary">Checkout Now</a>
+                                                </div>
+                                            </blockquote>
                                         </div>
-                                    </blockquote>
-                                </div>
-                                <!-- Quote 2 -->
-                                <div class="item">
-                                    <blockquote>
-                                        <div class="row">
-                                            <div class="col-sm-3 text-center">
-                                                <img class="img-responsive lozad" loading="lazy"
-                                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/folio08_BTHE3hmT6.jpg"
-                                                    style="width: 100px;height:100px;">
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <p>Stay tuned for upcoming events</p>
-                                                <small>Follow us</small>
-                                            </div>
-                                        </div>
-                                    </blockquote>
-                                </div>
+                                        
+                                        {% endfor %}
+                                    {% endblock %}
                             </div>
-                            <div class="read-more-wrapper">
-                                <a href="#" class="btn btn-outlined btn-primary">Checkout Now</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -279,42 +267,33 @@
     
                                 <div class="carousel-inner">
                                     <!-- Quote 1 -->
-                                    <div class="item active">
-                                        <blockquote>
-                                            <div class="row">
-                                                <div class="col-sm-3 text-center">
-                                                    <img class="img-responsive lozad" loading="lazy"
-                                                        src="https://ik.imagekit.io/iqgqcaprmq/portfolio/puneet_EF7ws5i0Zj.jpg"
-                                                        style="width: 100px;height:100px;">
+                                    {% block list %}
+                                        {% for event in upcomingEvents %}
+
+                                        <div class="item active">
+                                            <h2>{{event.title}}</h2>
+                                            <blockquote>
+                                                <div class="row">
+                                                    <div class="col-sm-3 text-center">
+                                                        <img class="img-responsive lozad" loading="lazy"
+                                                            src="{{event.image.url}}"
+                                                            style="width: 100px;height:100px;">
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <p>{{event.Desc}}</p>
+                                                        <small>Puneet Sharma</small>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-9">
-                                                    <p>Founder at BugClipper, Mobile and Front End Developer located at
-                                                        Mumbai</p>
-                                                    <small>Puneet Sharma</small>
+                                                <div class="read-more-wrapper">
+                                                    <a href="{{event.link}}" class="btn btn-outlined btn-primary">Register Here</a>
                                                 </div>
-                                            </div>
-                                        </blockquote>
-                                    </div>
-                                    <!-- Quote 2 -->
-                                    <div class="item">
-                                        <blockquote>
-                                            <div class="row">
-                                                <div class="col-sm-3 text-center">
-                                                    <img class="img-responsive lozad" loading="lazy"
-                                                        src="https://ik.imagekit.io/iqgqcaprmq/portfolio/folio08_BTHE3hmT6.jpg"
-                                                        style="width: 100px;height:100px;">
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <p>Stay tuned for upcoming events</p>
-                                                    <small>Follow us</small>
-                                                </div>
-                                            </div>
-                                        </blockquote>
-                                    </div>
+                                            </blockquote>
+                                        </div>
+                                        
+                                        {% endfor %}
+                                    {% endblock %}
                                 </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Register Here</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -722,7 +701,7 @@
                 </div>
             </div>
         </footer>
-        <!--/#footer--
+        <!--/#footer-->
 
 </body>
 </html>
