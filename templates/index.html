@@ -7,6 +7,8 @@
     <title>Ruminate</title>
     <link rel="apple-touch-icon" href="https://ik.imagekit.io/iqgqcaprmq/Ruminate_Logo_png-04_x0_ksBWZd.jpg">
     <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    {% comment %} <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> {% endcomment %}
+
 </head>
 
 <!-- Header -->
@@ -208,11 +210,12 @@
                         <div class="gap"></div>
                     </div>
                     <div class='col-md-offset-2 col-md-8 fade-up'>
-                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                        <div class="carousel slide" data-ride="carousel" id="ongoing-events-carousel" data-interval="2000">
 
                             <ol class="carousel-indicators">
-                                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#quote-carousel" data-slide-to="1"></li>
+                                {% for event in ongoingEvents %}
+                                    <li data-target="#ongoing-events-carousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                                {% endfor %}
                             </ol>
 
                             <div class="carousel-inner">
@@ -220,7 +223,7 @@
                                 {% block list1 %}
                                         {% for event in ongoingEvents %}
 
-                                        <div class="item active">
+                                        <div class="carousel-item item {% if forloop.first %}active{% endif %}">
                                             <h2>{{event.title}}</h2>
                                             <blockquote>
                                                 <div class="row">
@@ -243,7 +246,14 @@
                                         {% endfor %}
                                     {% endblock %}
                             </div>
-                            
+                            <a class="carousel-control-prev" href="#ongoing-events-carousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#ongoing-events-carousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -258,11 +268,12 @@
                             <div class="gap"></div>
                         </div>
                         <div class='col-md-offset-2 col-md-8 fade-up'>
-                            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                            <div class="carousel slide" data-ride="carousel" id="upcoming-events-carousel" data-interval="2000">
     
                                 <ol class="carousel-indicators">
-                                    <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-                                    <li data-target="#quote-carousel" data-slide-to="1"></li>
+                                    {% for event in upcomingEvents %}
+                                        <li data-target="#upcoming-events-carousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                                    {% endfor %}
                                 </ol>
     
                                 <div class="carousel-inner">
@@ -270,7 +281,7 @@
                                     {% block list %}
                                         {% for event in upcomingEvents %}
 
-                                        <div class="item active">
+                                        <div class="carousel-item item {% if forloop.first %}active{% endif %}">
                                             <h2>{{event.title}}</h2>
                                             <blockquote>
                                                 <div class="row">
@@ -293,6 +304,14 @@
                                         {% endfor %}
                                     {% endblock %}
                                 </div>
+                                <a class="carousel-control-prev" href="#upcoming-events-carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#upcoming-events-carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                                 
                             </div>
                         </div>
@@ -301,7 +320,7 @@
             </div>
         </section>
 
-        <section id="blog" class="white">
+  <section id="blog" class="white">
             <div class="container">
                 <div class="center gap fade-down section-heading">
                     <div class="gap"></div>
@@ -702,6 +721,8 @@
             </div>
         </footer>
         <!--/#footer-->
-
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
