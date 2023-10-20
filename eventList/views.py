@@ -18,6 +18,7 @@ def index(request):
     current_datetime = current_datetime.replace(microsecond = 0)
     ongoingEvents = list()
     upcomingEvents = list()
+    pastEvents = list()
     for x in events:
         x.end_date = x.end_date.replace(tzinfo = None)
         x.start_date = x.start_date.replace(tzinfo = None)
@@ -25,6 +26,9 @@ def index(request):
             ongoingEvents.append(x)
         if x.start_date>current_datetime:
             upcomingEvents.append(x)
+        if x.end_date<current_datetime:
+            pastEvents.append(x)
+        
         
     # print(ongoingEvents)
-    return render(request, "index.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents })
+    return render(request, "index.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents, "pastEvents":pastEvents })
