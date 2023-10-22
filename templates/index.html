@@ -502,6 +502,39 @@
                             </div>
                         </div>
                     </div>
+                    {%block past%}
+                    {% for event in pastEvents%}
+
+                    <div class="col-md-4">
+                        <div class="post">
+                            <div class="post-img-content">
+                                <img loading="lazy"
+                                    src="{{event.image.url}}"
+                                    class="img-responsive lozad" />
+                                <div class="overlay">
+                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
+                                            class="fa fa-link"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h2 class="post-title">{{event.title}}</h2>
+                                <div class="author">
+                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">event.end_date</time>
+                                </div>
+                                <div>
+                                    {{event.Desc}}
+                                </div>
+                                <div class="read-more-wrapper">
+                                    <a href="{event.link}" class="btn btn-outlined btn-primary">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                        <div class="gap"></div>
+                    {% endif %}
+                    {% endfor %}
+                    {%endblock%}
                 </div>
                 <div id="teams" class="gap"></div>
                 <div class="gap"></div>
