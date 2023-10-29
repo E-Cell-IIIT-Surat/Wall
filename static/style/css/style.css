@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,300&display=swap);
 
+#more-button {
+    display: block;
+    margin: 0 auto;
+}
 
 
 body {
@@ -1545,4 +1549,9 @@ img.author-box-image {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .hidden-cards{
+    display: none;
+
   }
