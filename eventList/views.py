@@ -15,6 +15,7 @@ def index(request):
     # ongoingEvents = list(filter(lambda x: x.end_date>current_datetime and x.start_date<current_datetime, events))
     # upcomingEvents = list(filter(lambda x: x.start_date>current_datetime , events))
     # current_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    
     current_datetime = current_datetime.replace(microsecond = 0)
     ongoingEvents = list()
     upcomingEvents = list()
@@ -28,7 +29,7 @@ def index(request):
             upcomingEvents.append(x)
         if x.end_date<current_datetime:
             pastEvents.append(x)
-        
+    pastEvents = list(filter(lambda x: x.shown, pastEvents))
         
     # print(ongoingEvents)
     return render(request, "index.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents, "pastEvents":pastEvents })

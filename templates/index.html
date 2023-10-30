@@ -278,7 +278,6 @@
                                     <!-- Quote 1 -->
                                     {% block list %}
                                         {% for event in upcomingEvents %}
-
                                         <div class="carousel-item item {% if forloop.first %}active{% endif %}">
                                             <h2>{{event.title}}</h2>
                                             <blockquote>
@@ -319,7 +318,7 @@
         </section>
 
   <section id="blog" class="white">
-            <div class="container">
+        <div class="container">
                 <div class="center gap fade-down section-heading">
                     <div class="gap"></div>
                     <h2 class="main-title">From The Past</h2>
@@ -386,6 +385,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="gap"></div>
                     <div class="col-md-4">
                         <div class="post">
                             <div class="post-img-content">
@@ -415,67 +416,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
                 <div class="gap"></div>
-                <div class="row" id="hidden-cards" style="display: none;">
-                    <!-- Add more cards here as needed -->
-                    <div class="col-md-4">
-                        <div class="post">
-                            <div class="post-img-content">
-                                <img loading="lazy" src="https://ik.imagekit.io/iqgqcaprmq/portfolio/GD_6IZbLTOd1v.jpeg"
-                                    class="img-responsive lozad" />
-                                <div class="overlay">
-                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
-                                            class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h2 class="post-title">Group discussion</h2>
-                                <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">November 9th, 2019</time>
-                                </div>
-                                <div>
-                                    Around 100+ students participated in group discussion. Students were divided into
-                                    group and were given the task to come up with an idea that could be helpful to the
-                                    society. This event helped opened their creative side and allowed them to
-                                    ponder over solution to society's problem.
-                                </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post">
-                            <div class="post-img-content">
-                                <img loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/team03_jBW_Db4iUf.jpeg"
-                                    class="img-responsive lozad" />
-                                <div class="overlay">
-                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
-                                            class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h2 class="post-title">Online Competition</h2>
-                                <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">October 22nd, 2019</time>
-                                </div>
-                                <div>
-                                    An online competition was conducted by RUMINATE in which students were asked to
-                                    submit their case studies related to entrepreneurship. The response we got was
-                                    overwhelming as we got around 50+ submissions on different topics.
-                                </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
                     {%block past%}
                     {% for event in pastEvents%}
-                    <!-- <div class="col-md-4">
+                    <div class="col-md-4 {% if forloop.counter >= 1 %} hidden-cards{% endif %}">
                         <div class="post">
                             <div class="post-img-content">
                                 <img loading="lazy"
@@ -499,17 +445,21 @@
                                 </div>
                             </div>
                         </div>   
-                    </div> -->
-                </div>
-                <div class="center gap fade-down section-heading">
-                    <button id="more-button" class="btn btn-outlined btn-primary" onclick="toggleMore()">More</button>
-                </div>  
+                    </div> 
+                
+                
                     {% if forloop.counter|divisibleby:3 %}
                         <div class="gap"></div>
                     {% endif %}
                     {% endfor %}
                     {%endblock%}
-                </div>
+
+                    
+                </div> 
+                <div class="center gap fade-down section-heading">
+                    <button id="more-button" class="btn btn-outlined btn-primary" onclick="toggleMore()">More</button>
+                </div> 
+
                 <div id="teams" class="gap"></div>
                 <div class="gap"></div>
                 <div class="center gap fade-down section-heading">
@@ -735,14 +685,22 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
             function toggleMore() {
-                var hiddenCards = document.getElementById("hidden-cards");
+                var hiddenCards = document.getElementsByClassName("hidden-cards");
                 var moreButton = document.getElementById("more-button");
-    
-                if (hiddenCards.style.display === "none") {
-                    hiddenCards.style.display = "block";
+                
+                var hiddenCardsArray = Array.from(hiddenCards);
+
+                hiddenCardsArray.forEach(card => {
+                        if (card.style.display === "none" || card.style.display === "") {
+                            card.style.display = "block";
+                        } else {
+                            card.style.display = "none"; 
+                        }
+                    });
+
+                if (moreButton.innerHTML === "More") {
                     moreButton.innerHTML = "Less";
                 } else {
-                    hiddenCards.style.display = "none";
                     moreButton.innerHTML = "More";
                 }
             }

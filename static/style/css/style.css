@@ -1550,3 +1550,8 @@ img.author-box-image {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .hidden-cards{
+    display: none;
+
+  }
