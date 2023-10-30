@@ -326,102 +326,10 @@
                     <p>The golden and glittery wall of memories.</p>
                 </div>
                 <div class="gap"></div>
-                <div class="row" id="event-cards">
-                    <div class="col-md-4">
-                        <div class="post">
-                            <div class="post-img-content">
-                                <img loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/team01__1__Z459rwmHR.jpg"
-                                    class="img-responsive lozad" />
-                                <div class="overlay">
-                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
-                                            class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h2 class="post-title">Orientation</h2>
-                                <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">September 16th,
-                                        2019</time>
-                                </div>
-                                <div>
-                                    One of the most awaited event,that is, Orientation of RUMINATE,E-Cell
-                                    of IIIT Surat was organised. Journey of how this cell was formed, the main idea
-                                    behind the E-Cell and the vision, that is, to support future start-ups by
-                                    connecting them with the resources that they need,was presented before the audience.
-                                </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="post">
-                            <div class="post-img-content">
-                                <img loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/team02_i-el1HRW1T.jpg"
-                                    class="img-responsive lozad" />
-                                <div class="overlay">
-                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
-                                            class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h2 class="post-title">Director's Session</h2>
-                                <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">September 16th,
-                                        2019</time>
-                                </div>
-                                <div>
-                                    Prof. J.S. Bhatt, Director of IIIT Surat was invited to the orientation event of
-                                    RUMINATE. He talked on how entrepreneurs and start-ups are changing and impacting
-                                    the world. He also encouraged students to think of new ideas which could benefit the
-                                    society.He also shared his past experience.
-                                </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="gap"></div>
-                    <div class="col-md-4">
-                        <div class="post">
-                            <div class="post-img-content">
-                                <img loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/Movies_XbVjyw77np.jpeg"
-                                    class="img-responsive lozad" />
-                                <div class="overlay">
-                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
-                                            class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h2 class="post-title">Movie Screening</h2>
-                                <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">November 9th, 2019</time>
-                                </div>
-                                <div>
-                                    A movie screening was organised for students which witnessed a strength 100+
-                                    budding entrepreneurs. The movie featured Steve Jobs,one of the
-                                    most creative and iconic entrepreneur this world has ever seen. The movie inspired
-                                    students to think
-                                    creatively and also instilled a leadership sense in them.
-                                </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                <div class="gap"></div>
                 
                     {%block past%}
                     {% for event in pastEvents%}
-                    <div class="col-md-4 {% if forloop.counter >= 1 %} hidden-cards{% endif %}">
+                    <div class="col-md-4 {% if forloop.counter >= 4 %} hidden-cards{% endif %}">
                         <div class="post">
                             <div class="post-img-content">
                                 <img loading="lazy"
@@ -432,14 +340,14 @@
                                             class="fa fa-link"></i></a>
                                 </div>
                             </div>
-                            <div class="content">
+                            <div class="content" id="module">
                                 <h2 class="post-title">{{event.title}}</h2>
                                 <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">event.end_date</time>
+                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">{{event.end_date}}</time>
                                 </div>
-                                <div>
+                                <div class="collapse" id="collapseExample" aria-expanded="false">
                                     {{event.Desc}}
-                                </div>
+                                </div>                                   
                                 <div class="read-more-wrapper">
                                     <a href="{event.link}" class="btn btn-outlined btn-primary">Read more</a>
                                 </div>
