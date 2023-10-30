@@ -7,8 +7,6 @@
     <title>Ruminate</title>
     <link rel="apple-touch-icon" href="https://ik.imagekit.io/iqgqcaprmq/Ruminate_Logo_png-04_x0_ksBWZd.jpg">
     <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
-    {% comment %} <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> {% endcomment %}
-
 </head>
 
 <!-- Header -->
@@ -329,7 +327,7 @@
                     <p>The golden and glittery wall of memories.</p>
                 </div>
                 <div class="gap"></div>
-                <div class="row">
+                <div class="row" id="event-cards">
                     <div class="col-md-4">
                         <div class="post">
                             <div class="post-img-content">
@@ -419,7 +417,8 @@
                     </div>
                 </div>
                 <div class="gap"></div>
-                <div class="row">
+                <div class="row" id="hidden-cards" style="display: none;">
+                    <!-- Add more cards here as needed -->
                     <div class="col-md-4">
                         <div class="post">
                             <div class="post-img-content">
@@ -474,38 +473,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="post">
-                            <div class="post-img-content">
-                                <img loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/portfolio/team05_RXWv_PEfMA.jpg"
-                                    class="img-responsive lozad" />
-                                <div class="overlay">
-                                    <a class="preview btn btn-outlined btn-primary" href="#"><i
-                                            class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h2 class="post-title">Interactive Session</h2>
-                                <div class="author">
-                                    <i class="fa fa-bookmark"></i> <time datetime="2014-01-20">January 25th, 2020</time>
-                                </div>
-                                <div>
-                                    Mentorship is one of the most important part of entrepreneurship. The budding
-                                    entrepreneurs were given a direction and guidance by their senior counterparts. This
-                                    session witnessed questions like how to think out of the box, how to generate
-                                    contacts and many more.
-                                </div>
-                                <div class="read-more-wrapper">
-                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     {%block past%}
                     {% for event in pastEvents%}
-
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="post">
                             <div class="post-img-content">
                                 <img loading="lazy"
@@ -528,8 +498,12 @@
                                     <a href="{event.link}" class="btn btn-outlined btn-primary">Read more</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>   
+                    </div> -->
+                </div>
+                <div class="center gap fade-down section-heading">
+                    <button id="more-button" class="btn btn-outlined btn-primary" onclick="toggleMore()">More</button>
+                </div>  
                     {% if forloop.counter|divisibleby:3 %}
                         <div class="gap"></div>
                     {% endif %}
@@ -544,7 +518,6 @@
                     <p>Alone we can do so little, together we can do so much.</p>
                 </div>
                 <div class="gap"></div>
-
                 <div id="meet-the-team" class="row desktop">
                     <div class="col-md-3 col-xs-4">
 
@@ -580,20 +553,24 @@
                         <div class="center team-member">
                             <div class="team-image">
                                 <img class="img-responsive lozad img-thumbnail bounce-in" loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/team/yogesh_88Yi95lhuI.jpg" alt="">
+                                    src="https://ik.imagekit.io/iqgqcaprmq/team/nikhil_hCo-CSG5PX.jpeg" alt="">
                                 <div class="overlay">
                                     <a class="preview btn btn-outlined btn-primary"
-                                        href="https://ik.imagekit.io/iqgqcaprmq/team/yogesh_88Yi95lhuI.jpg"
+                                        href="https://ik.imagekit.io/iqgqcaprmq/team/nikhil_hCo-CSG5PX.jpeg"
                                         rel="prettyPhoto"><i class="fa fa-eye"></i></a>
                                 </div>
                             </div>
                             <div class="team-content fade-up">
-                                <h5>Yogesh Pandey<small class="role muted">Joint Secretary</small></h5>
-                                <p>Computer Science<br /> Dept.</p>
+                                <h5>Nikhil Vyas<small class="role muted">Secretary</small></h5>
+                                <p>Electronics and Communication Dept.</p>
+                                <a class="btn btn-social btn-facebook"
+                                    href="https://www.facebook.com/nikhil.vyas.9889"><i class="fa fa-facebook"></i></a>
                                 <a class="btn btn-social btn-google-plus"
-                                    href="https://mail.google.com/mail/u/?authuser=yogi.sam72@gmail.com"><i
-                                        class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-linkedin"
-                                    href="https://www.linkedin.com/in/yogesh-pandey-61aa11190"><i
+                                    href="https://mail.google.com/mail/u/?authuser=nikhilvyas1998@gmail.com"><i
+                                        class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-instagram"
+                                    href="https://www.instagram.com/nik.vyas_95_/"><i class="fa fa-instagram"></i></a>
+                                <a class="btn btn-social btn-linkedin"
+                                    href="https://www.linkedin.com/in/nikhil-vyas-4a1a81148/"><i
                                         class="fa fa-linkedin"></i></a>
                             </div>
                         </div>
@@ -636,19 +613,23 @@
                         <div class="center team-member">
                             <div class="team-image">
                                 <img class="img-responsive lozad img-thumbnail bounce-in" loading="lazy"
-                                    src="https://ik.imagekit.io/iqgqcaprmq/team/yogesh_88Yi95lhuI.jpg" alt="">
+                                    src="https://ik.imagekit.io/iqgqcaprmq/team/nikhil_hCo-CSG5PX.jpeg" alt="">
                                 <div class="overlay">
                                     <a class="preview btn btn-outlined btn-primary"
-                                        href="https://ik.imagekit.io/iqgqcaprmq/team/yogesh_88Yi95lhuI.jpg"
+                                        href="https://ik.imagekit.io/iqgqcaprmq/team/nikhil_hCo-CSG5PX.jpeg"
                                         rel="prettyPhoto"><i class="fa fa-eye"></i></a>
                                 </div>
                             </div>
                             <div class="team-content fade-up">
-                                <h5>Yogesh Pandey<small class="role muted">Joint Secretary</small></h5>
+                                <h5>Nikhil Vyas<small class="role muted">Secretary</small></h5>
+                                <a class="btn btn-social btn-facebook"
+                                    href="https://www.facebook.com/nikhil.vyas.9889"><i class="fa fa-facebook"></i></a>
                                 <a class="btn btn-social btn-google-plus"
-                                    href="https://mail.google.com/mail/u/?authuser=yogi.sam72@gmail.com"><i
-                                        class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-linkedin"
-                                    href="https://www.linkedin.com/in/yogesh-pandey-61aa11190"><i
+                                    href="https://mail.google.com/mail/u/?authuser=nikhilvyas1998@gmail.com"><i
+                                        class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-instagram"
+                                    href="https://www.instagram.com/nik.vyas_95_/"><i class="fa fa-instagram"></i></a>
+                                <a class="btn btn-social btn-linkedin"
+                                    href="https://www.linkedin.com/in/nikhil-vyas-4a1a81148/"><i
                                         class="fa fa-linkedin"></i></a>
                             </div>
                         </div>
@@ -656,7 +637,7 @@
                 </div>
 
                 <div class="read-more-wrapper">
-                    <a class="btn btn-outlined btn-primary" type="button" href="./team">
+                    <a class="btn btn-outlined btn-primary" type="button" href="#" style="margin-right: 50px;">
                         See whole team
                     </a>
                 </div>
@@ -697,28 +678,24 @@
                                         alt="">
                                 </div>
                                 <div class="media-body">
-                                    <span class="media-heading"><a href="https://www.facebook.com/ecell.iiits/">Facebook
-                                            <i class="fa fa-facebook"></i></a></span>
+                                    <span class="media-heading"><a href="https://www.facebook.com/ecell.iiits/">Facebook</a>
+                                            <i class="fa fa-facebook"></i></span>
                                     <span class="media-heading"><a
                                             href="https://www.instagram.com/ecell_iiits/">Instagram</a> <i
                                             class="fa fa-instagram"></i></span>
+                                            <span class="media-heading"><a href="https://www.linkedin.com/in/ruminate/">Linkedin </a>
+                                                <i class="fa fa-linkedin"></i></span>
                                 </div>
                             </div>
                             <div class="media">
-                                <div class="pull-left">
-                                    <img class="widget-img" loading="lazy"
-                                        src="https://i.ya-webdesign.com/images/linkedin-logo-png-transparent-background-3.png"
-                                        alt="">
-                                </div>
+                                <div class="pull-left"></div>
                                 <div class="media-body">
-                                    <span class="media-heading"><a href="https://www.linkedin.com/in/ruminate/">Linkedin
-                                            <i class="fa fa-linkedin"></i></a></span>
-                                    <small class="muted">Give us a Like!</small>
+                                    
+                                    <medium class="muted">Give us a Like!</medium>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--/.col-md-3-->
 
                     <div class="col-md-3 col-sm-6">
                         <h4>Contact Us</h4>
@@ -731,7 +708,6 @@
                             +91-8078693503
                         </address>
                     </div>
-                    <!--/.col-md-3-->
                 </div>
             </div>
         </section>
@@ -757,5 +733,19 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function toggleMore() {
+                var hiddenCards = document.getElementById("hidden-cards");
+                var moreButton = document.getElementById("more-button");
+    
+                if (hiddenCards.style.display === "none") {
+                    hiddenCards.style.display = "block";
+                    moreButton.innerHTML = "Less";
+                } else {
+                    hiddenCards.style.display = "none";
+                    moreButton.innerHTML = "More";
+                }
+            }
+        </script>    
 </body>
 </html>
