@@ -1555,3 +1555,11 @@ img.author-box-image {
     display: none;
 
   }
+
+  
+  #module #collapseExample.collapse:not(.show) {
+    display: block;
+    height: 9.75rem;
+    overflow: hidden;
+  }
+  
