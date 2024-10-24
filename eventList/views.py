@@ -33,3 +33,6 @@ def index(request):
         
     # print(ongoingEvents)
     return render(request, "index.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents, "pastEvents":pastEvents })
+
+def test(request):
+    return render(request,"base.html")
