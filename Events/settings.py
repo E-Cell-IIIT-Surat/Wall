@@ -13,14 +13,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-
+import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+vercel = True
 #Handling Image Gets
-MEDIA_URL = '/images/'
+MEDIA_URL = ''
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 # Quick-start development settings - unsuitable for production
@@ -30,11 +32,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '')
 SECRET_KEY = 'django-insecure-%j+qyy3%o+0s!(^)wx!hqx6scmt1aknri5$c+_bc+8z1=w98)n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 # Application definition
 
 INSTALLED_APPS = [
@@ -133,3 +135,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+print(os.environ.get('POSTGRESQL_URL'))
+if vercel:
+    DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('POSTGRESQL_URL'))
+}
