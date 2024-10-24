@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruminate</title>
+    <link rel="stylesheet" type="text/css" href="{% static "style/navbar.css" %}">
+</head>
+<body>
+    <!-- navbar -->
+    {% block navbar%}
+    {% include "navbar.html" %}
+    {% endblock %}
+    <!-- ongoing event -->
+    {% block ongoingEvent%}
+    {% endblock %}
+    <!-- upcoming event -->
+    {% block upcomingEvent%}
+    {% endblock %}
+    <!-- past event -->
+    {% block pastEvent%}
+    {% endblock %}
+    <!-- footer -->
+    {% block footer%}
+    {% include "footer.html" %}
+    {% endblock %}
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="{% static "style/navbar.js" %}"></script>
+</html>
