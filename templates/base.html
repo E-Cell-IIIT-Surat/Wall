@@ -5,27 +5,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruminate</title>
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/iqgqcaprmq/Ruminate_Logo_png-04_PT20p_SRR5.png">
     <link rel="stylesheet" type="text/css" href="{% static "style/navbar.css" %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- make class to show background image -->
+  <style>
+    .bg-image {
+        background-image: url('../static/style/images/test.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 500px;
+    }
+    </style>
 </head>
-<body>
+<body class="bg-image">
     <!-- navbar -->
+    <div class="bg-white fixed top-0 left-0 w-full overflow-hidden z-50">
     {% block navbar%}
     {% include "navbar.html" %}
     {% endblock %}
+    </div>
+    <section class="flex flex-col justify-center items-center h-screen">
+        <img loading="lazy" class="w-1/2 h-auto lg:w-1/5 md:w-1/3" src="https://ik.imagekit.io/iqgqcaprmq/Ruminate_Logo_png-04_PT20p_SRR5.png" alt="Logo" data-aos="fade-up" data-aos-duration="1500">
+        <h2 class="text-center text-white text-4xl" data-aos="fade-up" data-aos-duration="2000">THE ENTREPRENEURSHIP CELL</h2>
+        <h2 class="text-center text-white text-2xl my-4" data-aos="fade-up" data-aos-duration="2000">Indian Institute of Information Technology, Surat</h2>
+    </section>
+    <!-- About us-->
+    <section id="about" class="bg-white p-10">
+        <div>
+            <h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl" data-aos="fade-up" data-aos-duration="1500">A  Little  About  Us</h1>
+            <hr data-aos="fade-up" data-aos-duration="1500">
+            <p class="my-3 text-lg text-center text-gray-500 md:text-xl" data-aos="fade-up" data-aos-duration="1500">A The secret of getting ahead is getting started.</p>
+            <h3 id="vision" class="mb-4 text-2xl text-center font-extrabold leading-none tracking-tight text-gray-900" data-aos="fade-up" data-aos-duration="1500">Vision</h3>
+            <p class="mb-3 text-lg text-center text-gray-500 md:text-xl" data-aos="fade-up" data-aos-duration="1500">Entrepreneurship is the fuel that boosts the rocket of ideas and lands them on the practical
+                world. It will not only contribute to the development of India but also help raise the
+                quality of life in the country.
+                With this belief The Entrepreneurship Cell, IIIT Surat aims to inculcate and nurture the raw
+                ideas and skills of the students, willing to convert their ideas into product and to emerge
+                as a leading entrepreneur which will benefit the nation as a whole and leads to India's
+                global development.</p>
+            <br>
+            <h3 class="mb-4 text-2xl text-center font-extrabold leading-none tracking-tight text-gray-900" data-aos="fade-up" data-aos-duration="1500">Mission</h3>
+            <p class="mb-3 text-lg text-center text-gray-500 md:text-xl" data-aos="fade-up" data-aos-duration="1500">Our mission is to unlock the latent innovative and inventive potential of the students by
+                creating a pathway of various opportunities like orientation, interactive sessions with
+                professionals, product development guidance, industrial and field contacts and the
+                competitions to increase entrepreneurial skills. This will not only foster entrepreneurial
+                thinking but also instill confidence in every student to convert their creativity into
+                product to make people life easier and help grow India faster.</p>
+        </div>
+    </section>
+    
+    
     <!-- ongoing event -->
     {% block ongoingEvent%}
     {% endblock %}
     <!-- upcoming event -->
+    
     {% block upcomingEvent%}
     {% endblock %}
     <!-- past event -->
+     <div class="bg-white py-2">
+        <h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl" data-aos="fade-up" data-aos-duration="1500">Past Events</h1>
     {% block pastEvent%}
+    {% include "pastEvents.html" %}
+    <div class="flex flex-wrap items-center justify-center">
+        <button id="more-button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="toggleMore()" data-aos="fade-up" data-aos-duration="1000">More</button>
+    </div>
     {% endblock %}
+     </div>
     <!-- footer -->
     {% block footer%}
     {% include "footer.html" %}
     {% endblock %}
 </body>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script>
+  function toggleMore() {
+    var hiddenCards = document.getElementsByClassName("hidden-cards");
+    var moreButton = document.getElementById("more-button");
+
+    var hiddenCardsArray = Array.from(hiddenCards);
+    
+    hiddenCardsArray.forEach(card => {
+            if (card.style.display === "none" || card.style.display === "") {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none"; 
+            }
+        });
+
+    if (moreButton.innerHTML === "More") {
+        moreButton.innerHTML = "Less";
+    } else {
+        moreButton.innerHTML = "More";
+    }
+}
+</script>
 <script src="{% static "style/navbar.js" %}"></script>
 </html>
