@@ -34,17 +34,19 @@
     
     <!-- ongoing event -->
     {% block ongoingEvent%}
+    {% include "ongoingEvents.html" %}
     {% endblock %}
-    <!-- upcoming event -->
     
+    <!-- upcoming event -->
     {% block upcomingEvent%}
+    {% include "upcomingEvents.html" %}
     {% endblock %}
+
     <!-- past event -->
-     <section class="bg-white py-2">
     {% block pastEvent%}
     {% include "pastEvents.html" %}
     {% endblock %}
-     </section>
+
     <!-- footer -->
     {% block footer%}
     {% include "footer.html" %}

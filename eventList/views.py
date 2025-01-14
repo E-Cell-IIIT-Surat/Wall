@@ -62,4 +62,5 @@ def test(request):
         if x.end_date<current_datetime:
             pastEvents.append(x)
     pastEvents = list(filter(lambda x: x.shown, pastEvents))
+    print("hello", upcomingEvents)
     return render(request,"base.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents, "pastEvents":pastEvents })
