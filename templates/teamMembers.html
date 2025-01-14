@@ -1,0 +1,45 @@
+{% if teamMembers %}
+<section class="bg-white py-2">
+    <h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl" data-aos="fade-up" data-aos-duration="1500">
+        Meet Our Team
+    </h1>
+    <div class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+        {% for member in teamMembers %}
+        <div data-aos="fade-up" data-aos-duration="1500" class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+            <div class="overflow-hidden rounded-t-xl">
+                <img loading="lazy" src="{{ member.image.url }}" class="h-80 w-72 object-cover" alt="Team Member Image" />
+            </div>
+            <div class="px-4 py-3 w-72">
+                <h2 class="text-lg font-bold text-black truncate block capitalize">{{ member.name }}</h2>
+                <p class="text-sm text-gray-600">{{ member.role }}</p>
+                <div class="flex items-center mt-3 space-x-3">
+                    {% if member.linkedin %}
+                    <a href="{{ member.linkedin }}" target="_blank" class="text-blue-500 hover:underline">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    {% endif %}
+                    {% if member.github %}
+                    <a href="{{ member.github }}" target="_blank" class="text-gray-900 hover:underline">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    {% endif %}
+                    {% if member.insta %}
+                    <a href="{{ member.insta }}" target="_blank" class="text-pink-500 hover:underline">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    {% endif %}
+                    {% if member.email %}
+                    <a href="mailto:{{ member.email }}" class="text-gray-700 hover:underline" hidden="true">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    {% endif %}
+                </div>
+                <p class="text-xs text-gray-500 mt-2">Batch: {{ member.batch }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% else %}
+<p class="text-center text-gray-600 mt-5">No team members to display at the moment.</p>
+{% endif %}
