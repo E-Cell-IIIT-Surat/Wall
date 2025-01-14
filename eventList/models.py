@@ -12,3 +12,13 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    image = models.ImageField(upload_to=f"static/images/")
+    linkedin = models.CharField(max_length=300)
+    github = models.CharField(max_length=300)
+    insta = models.CharField(max_length=300)
+    email = models.CharField(max_length=300)
+    batch = models.CharField(max_length=100)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Event
+from .models import Event, TeamMember
 from datetime import datetime
 # Create your views here.
 # print(type(Event.objects.all()[0].end_date))
@@ -62,5 +62,5 @@ def test(request):
         if x.end_date<current_datetime:
             pastEvents.append(x)
     pastEvents = list(filter(lambda x: x.shown, pastEvents))
-    print("hello", upcomingEvents)
-    return render(request,"base.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents, "pastEvents":pastEvents })
+    team_members = TeamMember.objects.all()
+    return render(request,"base.html", {"ongoingEvents":ongoingEvents ,"upcomingEvents":upcomingEvents, "pastEvents":pastEvents, 'teamMembers': team_members})
