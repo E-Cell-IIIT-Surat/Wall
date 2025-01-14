@@ -5,27 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruminate</title>
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/iqgqcaprmq/Ruminate_Logo_png-04_PT20p_SRR5.png">
     <link rel="stylesheet" type="text/css" href="{% static "style/navbar.css" %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- make class to show background image -->
+  <style>
+    .bg-image {
+        background-image: url('../static/images/test.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 500px;
+    }
+    </style>
 </head>
-<body>
+<body class="bg-image">
     <!-- navbar -->
+    <section class="bg-white fixed w-full z-50">
     {% block navbar%}
     {% include "navbar.html" %}
     {% endblock %}
+    </section>
+    
+    {% block about%}
+    {% include "about.html" %}
+    {% endblock%}
+    
     <!-- ongoing event -->
     {% block ongoingEvent%}
     {% endblock %}
     <!-- upcoming event -->
+    
     {% block upcomingEvent%}
     {% endblock %}
     <!-- past event -->
+     <section class="bg-white py-2">
     {% block pastEvent%}
+    {% include "pastEvents.html" %}
     {% endblock %}
+     </section>
     <!-- footer -->
     {% block footer%}
     {% include "footer.html" %}
     {% endblock %}
 </body>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script>
+  function toggleMore() {
+    var hiddenCards = document.getElementsByClassName("hidden-cards");
+    var moreButton = document.getElementById("more-button");
+
+    var hiddenCardsArray = Array.from(hiddenCards);
+    
+    hiddenCardsArray.forEach(card => {
+            if (card.style.display === "none" || card.style.display === "") {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none"; 
+            }
+        });
+
+    if (moreButton.innerHTML === "More") {
+        moreButton.innerHTML = "Less";
+    } else {
+        moreButton.innerHTML = "More";
+    }
+}
+</script>
 <script src="{% static "style/navbar.js" %}"></script>
 </html>
